@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { SafeUser } from "../../features/auth/models";
+import { SafeUser } from "../../features/auth/models/auth";
 import jwt from "jsonwebtoken";
 import { UnauthorizedError } from "../../errors";
 import { config } from "../../config";

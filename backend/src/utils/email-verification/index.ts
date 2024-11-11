@@ -6,7 +6,7 @@ import {
   ReturnedEmailVerification,
   SelectEmailVerificationModel,
   UpdateEmailVerificationModel,
-} from "../../features/auth/models";
+} from "../../features/auth/models/email-verification";
 
 interface VerifyEmailProperties {
   to: string;

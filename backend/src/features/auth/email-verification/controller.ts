@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { SelectUnsafeUserModel, UpdateUserIsVerifyModel } from "../models";
+import { SelectUnsafeUserModel, UpdateUserIsVerifyModel } from "../models/auth";
 import { BadRequestError } from "../../../errors";
 import { compereHash } from "../../../utils/hashes";
 
