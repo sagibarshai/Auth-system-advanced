@@ -19,8 +19,6 @@ export const signUpController = async (req: SignUpRequest, res: Response, next: 
     }
     const { safeUser, verificationToken } = await InsertUserModel({ ...req.body, password: hashedPassword });
 
-    console.log("sign up ", verificationToken);
-
     await sendEmailVerification({ id: safeUser.id, to: safeUser.email, token: verificationToken });
     res.status(201).send(safeUser);
   } catch (err) {
