@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { NewUserPayload, InsertUserModel, SelectUserModel } from "../models/auth";
 import { BadRequestError } from "../../../errors";
 import { toHash } from "../../../utils/hashes";
-import { createTokenAndSetCookie, deleteTokenCookie } from "../../../utils/jwt";
+import { deleteTokenCookie } from "../../../utils/jwt";
 import { sendEmailVerification } from "../../../utils/email-verification";
 
 interface SignUpRequest extends Request {
