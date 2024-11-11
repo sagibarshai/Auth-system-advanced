@@ -1,7 +1,12 @@
 import nodemailer from "nodemailer";
-import SMTPTransport from "nodemailer/lib/smtp-transport";
 
 import { config } from "../../config";
+import {
+  NewEmailVerificationModel,
+  ReturnedEmailVerification,
+  SelectEmailVerificationModel,
+  UpdateEmailVerificationModel,
+} from "../../features/auth/models";
 
 interface VerifyEmailProperties {
   to: string;
@@ -16,7 +21,7 @@ export const sendEmailVerification = async ({
   token,
   subject = "Account verification",
   text = "Verify your account here:",
-}: VerifyEmailProperties): Promise<SMTPTransport.SentMessageInfo | undefined> => {
+}: VerifyEmailProperties): Promise<ReturnedEmailVerification | undefined> => {
   const mailOptions = {
     from: config.MAIL.FROM,
     to: to,
@@ -35,10 +40,18 @@ export const sendEmailVerification = async ({
     },
   });
 
-  let mailResponse: SMTPTransport.SentMessageInfo | undefined;
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) throw error;
-    mailResponse = info;
-  });
-  return mailResponse;
+  const afterSendCallback = async (status: "success" | "failure") => {
+    const existsEmailVerification = await SelectEmailVerificationModel(to);
+    if (!existsEmailVerification) {
+      return await NewEmailVerificationModel({ email: to, isSent: status === "success", userId: id });
+    }
+    return UpdateEmailVerificationModel({ email: to, isSent: status === "success", userId: id });
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    return await afterSendCallback("success");
+  } catch (err) {
+    return await afterSendCallback("failure");
+  }
 };

@@ -16,8 +16,6 @@ app.use(json());
 
 app.use(helmet());
 
-console.log(config.COOKIES.EXPIRED_IN);
-
 app.use(
   cookieSession({
     keys: [process.env.COOKIE_SECRET!],

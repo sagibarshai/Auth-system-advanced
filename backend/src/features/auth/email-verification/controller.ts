@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { SelectUnsafeUserModel, UpdateIsVerifyModel } from "../models";
+import { SelectUnsafeUserModel, UpdateUserIsVerifyModel } from "../models";
 import { BadRequestError } from "../../../errors";
 import { compereHash } from "../../../utils/hashes";
 
@@ -12,7 +12,7 @@ export const emailVerificationController = async (req: Request, res: Response, n
     const isTokensMatch = compereHash(unsafeUser.verificationToken, token);
     if (!isTokensMatch) return next(BadRequestError([{ message: "Invalid verification token" }]));
 
-    await UpdateIsVerifyModel(Number(id));
+    await UpdateUserIsVerifyModel(Number(id));
 
     res.status(301).send("Account is successfully verified");
   } catch (err) {
