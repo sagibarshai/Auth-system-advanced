@@ -1,12 +1,7 @@
 import nodemailer from "nodemailer";
 
 import { config } from "../../config";
-import {
-  NewEmailVerificationModel,
-  ReturnedEmailVerification,
-  SelectEmailVerificationModel,
-  UpdateEmailVerificationModel,
-} from "../../features/auth/models/email-verification";
+import { ReturnedEmailVerification, UpsertEmailVerificationModel } from "../../features/auth/models/email-verification";
 
 interface VerifyEmailProperties {
   to: string;
@@ -40,18 +35,10 @@ export const sendEmailVerification = async ({
     },
   });
 
-  const afterSendCallback = async (status: "success" | "failure") => {
-    const existsEmailVerification = await SelectEmailVerificationModel(to);
-    if (!existsEmailVerification) {
-      return await NewEmailVerificationModel({ email: to, isSent: status === "success", userId: id });
-    }
-    return UpdateEmailVerificationModel({ email: to, isSent: status === "success", userId: id });
-  };
-
   try {
     await transporter.sendMail(mailOptions);
-    return await afterSendCallback("success");
+    return await UpsertEmailVerificationModel({ email: to, isSent: true, userId: id });
   } catch (err) {
-    return await afterSendCallback("failure");
+    return await UpsertEmailVerificationModel({ email: to, isSent: false, userId: id });
   }
 };

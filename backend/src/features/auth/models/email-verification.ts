@@ -32,6 +32,53 @@ const storedEmailVerificationsToReturnedEmailVerifications = (emailVerification:
   };
 };
 
+export const UpsertEmailVerificationModel = async (emailVerificationPayload: EmailVerificationPayload): Promise<ReturnedEmailVerification> => {
+  try {
+    const response = await pgClient.query(
+      `
+        INSERT INTO Email_Verifications
+        (email, user_id, is_sent, attempts)
+        VALUES 
+        ($1, $2, $3, 1)
+        ON CONFLICT (email)
+        DO UPDATE SET 
+          updated_at = $4,
+          is_sent = $3,
+          attempts = Email_Verifications.attempts + 1
+        RETURNING *;
+      `,
+      [emailVerificationPayload.email, emailVerificationPayload.userId, emailVerificationPayload.isSent, new Date()]
+    );
+    const storedEmailVerification = response.rows[0] as StoredEmailVerification;
+    console.log(
+      "storedEmailVerificationsToReturnedEmailVerifications(storedEmailVerification) ",
+      storedEmailVerificationsToReturnedEmailVerifications(storedEmailVerification)
+    );
+    return storedEmailVerificationsToReturnedEmailVerifications(storedEmailVerification);
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const SelectEmailVerificationModel = async (email: string): Promise<ReturnedEmailVerification | undefined> => {
+  try {
+    const response = await pgClient.query(
+      `
+          SELECT * FROM Email_Verifications WHERE email=$1
+          `,
+      [email]
+    );
+    const storedEmailVerification = response.rows[0] as StoredEmailVerification | undefined;
+    if (!storedEmailVerification) return;
+
+    return storedEmailVerificationsToReturnedEmailVerifications(storedEmailVerification);
+  } catch (err) {
+    throw err;
+  }
+};
+
+// this two model below is for future use
+
 export const NewEmailVerificationModel = async (emailVerificationPayload: EmailVerificationPayload): Promise<ReturnedEmailVerification> => {
   try {
     const response = await pgClient.query(
@@ -72,19 +119,4 @@ export const UpdateEmailVerificationModel = async (emailVerificationPayload: Ema
     throw err;
   }
 };
-export const SelectEmailVerificationModel = async (email: string): Promise<ReturnedEmailVerification | undefined> => {
-  try {
-    const response = await pgClient.query(
-      `
-        SELECT * FROM Email_Verifications WHERE email=$1
-        `,
-      [email]
-    );
-    const storedEmailVerification = response.rows[0] as StoredEmailVerification | undefined;
-    if (!storedEmailVerification) return;
-
-    return storedEmailVerificationsToReturnedEmailVerifications(storedEmailVerification);
-  } catch (err) {
-    throw err;
-  }
-};
+//
