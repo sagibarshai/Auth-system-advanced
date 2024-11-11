@@ -50,10 +50,7 @@ export const UpsertEmailVerificationModel = async (emailVerificationPayload: Ema
       [emailVerificationPayload.email, emailVerificationPayload.userId, emailVerificationPayload.isSent, new Date()]
     );
     const storedEmailVerification = response.rows[0] as StoredEmailVerification;
-    console.log(
-      "storedEmailVerificationsToReturnedEmailVerifications(storedEmailVerification) ",
-      storedEmailVerificationsToReturnedEmailVerifications(storedEmailVerification)
-    );
+
     return storedEmailVerificationsToReturnedEmailVerifications(storedEmailVerification);
   } catch (err) {
     throw err;

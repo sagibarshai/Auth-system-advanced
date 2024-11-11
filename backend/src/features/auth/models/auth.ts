@@ -1,5 +1,4 @@
 import { pgClient } from "../../../database/init";
-import { toHash } from "../../../utils/hashes";
 
 interface StoredUser {
   id: number;
@@ -57,7 +56,7 @@ export const InsertUserModel = async (user: NewUserPayload): Promise<{ safeUser:
          ($1, $2, $3, $4, $5, $6)
          RETURNING *
          `,
-      [user.firstName, user.lastName, user.email, user.password, user.phoneNumber, toHash(randomToken)]
+      [user.firstName, user.lastName, user.email, user.password, user.phoneNumber, randomToken]
     );
 
     const storedUser = response.rows[0] as StoredUser;

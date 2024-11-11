@@ -66,4 +66,7 @@ export const config = {
     HOST: process.env.POSTGRES_HOST,
     SSL: false,
   },
+  EMAIL_VERIFICATION: {
+    MAX_ATTEMPT: 3,
+  },
 };
