@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { SelectUnsafeUserModel, UpdateLoginModel } from "../models/auth";
 import { BadRequestError, ForbiddenError } from "../../../errors";
 import { compereHash } from "../../../utils/hashes";
-import { createTokenAndRefreshTokenAndSetCookies, deleteTokenCookie } from "../../../utils/jwt";
+import { createTokenSetCookie, deleteTokenCookie } from "../../../utils/jwt";
 
 interface SignUpRequest extends Request {
   body: {
@@ -24,8 +24,8 @@ export const signInController = async (req: SignUpRequest, res: Response, next: 
 
     const safeUser = await UpdateLoginModel(req.body.email);
 
-    // set token and refresh token
-    createTokenAndRefreshTokenAndSetCookies(safeUser, req);
+    // attach token as cookie to client
+    createTokenSetCookie(safeUser, req);
 
     res.status(200).send(safeUser);
   } catch (err) {

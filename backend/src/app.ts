@@ -18,10 +18,10 @@ app.use(helmet());
 
 app.use(
   cookieSession({
-    name: "session",
+    name: "token",
     keys: [process.env.COOKIE_SECRET!],
     secure: config.PROD ? true : false,
-    maxAge: config.COOKIES.JWT_REFRESH_TOKEN_EXPIRED_IN,
+    maxAge: config.COOKIES.JWT_COOKIE_EXPIRED_IN * 10000,
     signed: false,
     httpOnly: true,
   })
