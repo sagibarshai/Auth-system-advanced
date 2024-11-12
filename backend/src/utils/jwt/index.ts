@@ -4,10 +4,14 @@ import jwt from "jsonwebtoken";
 import { UnauthorizedError } from "../../errors";
 import { config } from "../../config";
 
-export const createTokenAndSetCookie = (payload: SafeUser, req: Request): string => {
+export const createTokenAndRefreshTokenAndSetCookies = (payload: SafeUser, req: Request) => {
   const token = jwt.sign(payload, process.env.JWT_KEY!, { expiresIn: config.JWT.EXPIRED_IN });
-  setTokenCookie(req, token);
-  return token;
+  const refreshToken = jwt.sign(payload, process.env.JWT_KEY!, { expiresIn: config.JWT.REFRESH_EXPIRED_IN });
+
+  req.session = {
+    token,
+    refreshToken,
+  };
 };
 
 export const verifyToken = (token: string): SafeUser | undefined => {
@@ -18,12 +22,6 @@ export const verifyToken = (token: string): SafeUser | undefined => {
     // token is expired or not valid
     throw UnauthorizedError();
   }
-};
-
-export const setTokenCookie = (req: Request, token: string) => {
-  req.session = {
-    token,
-  };
 };
 
 export const deleteTokenCookie = (req: Request) => {

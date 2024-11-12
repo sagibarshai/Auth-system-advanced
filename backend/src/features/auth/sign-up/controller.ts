@@ -11,12 +11,12 @@ interface SignUpRequest extends Request {
 
 export const signUpController = async (req: SignUpRequest, res: Response, next: NextFunction) => {
   try {
+    deleteTokenCookie(req);
+
     const hashedPassword = toHash(req.body.password);
     const isUserExists = await SelectUserModel(req.body.email);
-    if (isUserExists) {
-      deleteTokenCookie(req);
-      return next(BadRequestError([{ message: `User with email ${req.body.email} already exists`, field: "email" }]));
-    }
+    if (isUserExists) return next(BadRequestError([{ message: `User with email ${req.body.email} already exists`, field: "email" }]));
+
     const { safeUser, verificationToken } = await InsertUserModel({ ...req.body, password: hashedPassword });
 
     await sendEmailVerification({ id: safeUser.id, to: safeUser.email, token: verificationToken });

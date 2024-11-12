@@ -42,10 +42,12 @@ export const config = {
   PROD: Boolean(process.env.NODE_ENV),
   BASE_URL: Boolean(process.env.NODE_ENV) ? "https://ProductionDomainUrl.com" : "http://localhost",
   JWT: {
-    EXPIRED_IN: Number(process.env.JWT_EXPIRED_IN) || 3600, // In seconds (Is redemanded to set this value as COOKIES.EXPIRED_IN / 1000 )
+    EXPIRED_IN: Number(process.env.JWT_EXPIRED_IN) || 60, //  1min  // In seconds (Is recommend to set this value as COOKIES.EXPIRED_IN / 1000 )
+    REFRESH_EXPIRED_IN: Number(process.env.JWT_EXPIRED_IN) || 60 * 60, //  1hour   // In seconds (Is recommend to set this value as COOKIES.EXPIRED_IN / 1000 )
   },
   COOKIES: {
-    EXPIRED_IN: Number(process.env.COOKIES_EXPIRED_IN) || 3600 * 1000, // In milliseconds (Is redemanded to set this value as JWT.EXPIRED_IN * 1000 )
+    JWT_COOKIE_EXPIRED_IN: Number(process.env.COOKIES_EXPIRED_IN) || 60 * 1000, //  1min  // In milliseconds (Is recommend to set this value as JWT.EXPIRED_IN * 1000 )
+    JWT_REFRESH_TOKEN_EXPIRED_IN: Number(process.env.COOKIES_EXPIRED_IN) || 60 * 60 * 1000, //  1hour   // In milliseconds (Is recommend to set this value as JWT.EXPIRED_IN * 1000 )
   },
   MAIL: {
     FROM: "noreply@emailverifyee.com",

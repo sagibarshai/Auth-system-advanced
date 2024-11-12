@@ -18,10 +18,11 @@ app.use(helmet());
 
 app.use(
   cookieSession({
+    name: "session",
     keys: [process.env.COOKIE_SECRET!],
     secure: config.PROD ? true : false,
-    maxAge: config.COOKIES.EXPIRED_IN, // 1 hour
-    signed: false, // not encrypt the cookie
+    maxAge: config.COOKIES.JWT_REFRESH_TOKEN_EXPIRED_IN,
+    signed: false,
     httpOnly: true,
   })
 );
