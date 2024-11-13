@@ -6,7 +6,7 @@ This project provides a secure and well-structured Node.js Express TypeScript ap
 
 ---
 
-**User Authentication:**
+# User Authentication:
 
 Signup with email and password
 
@@ -20,7 +20,7 @@ Resend email verification with configurable retry limits
 
 ---
 
-**Security:**
+# Security:
 
 Strong password hashing
 
@@ -34,7 +34,7 @@ Session management with secure secret
 
 ---
 
-**Middleware:**
+# Middlewares:
 
 currentUser: Retrieves the currently logged-in user (if any)
 
@@ -46,7 +46,52 @@ errorHandler: Provides centralized error handling
 
 ---
 
-**Structure:**
+# Error Handling:
+
+Centralized Error Handling Middleware: Implement a middleware to handle errors gracefully and provide informative error messages to the client.
+
+Custom Error Types: Define custom error types for different error scenarios (e.g., validation errors, authentication errors, database errors) to provide more specific error messages.
+
+Error Logging: Log errors to a file or a logging service to aid in debugging and monitoring.
+
+---
+
+
+# Utils:
+
+Helper Functions: Create reusable helper functions for tasks like:
+
+Validating user input
+
+Hashing passwords
+
+Generating JWT tokens
+
+Sending emails
+
+Formatting dates and times
+
+---
+# Strong Configuration:
+
+Database Configuration:
+
+JWT Configuration
+
+Cookie Configuration
+
+Email Configuration
+
+SMTP server settings (host, port, username, password)
+
+Sender email address
+
+Security Configuration
+
+
+---
+
+# Structure:
 
 Clean and organized codebase using TypeScript
 
@@ -56,19 +101,17 @@ Environment variables for sensitive data (*.env)
 
 ---
 
-**Database:**
+# Database:
 
-Uses PostgreSQL for user and verification data (two tables: users and emailVerification)
+Uses PostgreSQL for user and verification data (two tables: Users and Email_Verifications)
 
 Secure connection and data management
 
 ---
 
-**Dockerization:**
+# Dockerization:
 
 Dockerfile and docker-compose.yml included for easy deployment
-
-Facilitates local development and containerized environments
 
 ---
 
