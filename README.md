@@ -11,6 +11,7 @@ This guide provides two options for setting up the environment variables and run
 
 # Option 1: Single .env File in the Backend Folder
 1. Clone the Repository
+
 git clone https://github.com/sagibarshai/Auth-System.git
 
 cd Auth-System
