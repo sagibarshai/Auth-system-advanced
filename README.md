@@ -1,6 +1,76 @@
+# Robust Auth System with Database, Refresh Tokens and Cookie-Based JWT Authentication
 
-# Auth-System Advanced
+This project provides a secure and well-structured Node.js Express TypeScript application for user authentication with email verification, refresh tokens, and cookie-based JWT authentication. It's designed to be a solid foundation for building new projects with robust authentication features.
 
+**Key Features:**
+
+---
+
+**User Authentication:**
+
+Signup with email and password
+
+Signin with email and password
+
+Signout (invalidate token and cookie)
+
+Email verification for account activation
+
+Resend email verification with configurable retry limits
+
+---
+
+**Security:**
+
+Strong password hashing
+
+Email verification for increased security
+
+Refresh tokens for long-lived sessions
+
+Cookie-based JWT authentication for secure token storage
+
+Session management with secure secret
+
+---
+
+**Middleware:**
+
+currentUser: Retrieves the currently logged-in user (if any)
+
+requireAuth: Protects routes that require authentication
+
+notFoundRoute: Handles requests for non-existent routes
+
+errorHandler: Provides centralized error handling
+
+---
+
+**Structure:**
+
+Clean and organized codebase using TypeScript
+
+Modular design for easier maintenance
+
+Environment variables for sensitive data (*.env)
+
+---
+
+**Database:**
+
+Uses PostgreSQL for user and verification data (two tables: users and emailVerification)
+
+Secure connection and data management
+
+---
+
+**Dockerization:**
+
+Dockerfile and docker-compose.yml included for easy deployment
+
+Facilitates local development and containerized environments
+
+---
 
 
 # Getting Started:
