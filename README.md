@@ -107,7 +107,7 @@ git
 
 This guide provides two options for setting up the environment variables and running the project. Choose the option that best fits your needs.
 
-Option 1: Single .env File in the Backend Folder
+# Option 1: Single .env File in the Backend Folder
 1. Clone the Repository
 git clone https://github.com/sagibarshai/Auth-System.git
 cd Auth-System
@@ -147,7 +147,7 @@ To stop the project, run:
 docker-compose down
 
 
-Option 2: Two .env Files (One in the Backend Folder and One in the Root Directory)
+# Option 2: Two .env Files (One in the Backend Folder and One in the Root Directory)
 1. Clone the Repository
 git clone https://github.com/sagibarshai/Auth-System.git
 cd Auth-System
