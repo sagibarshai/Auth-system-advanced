@@ -13,9 +13,9 @@ This guide provides two options for setting up the environment variables and run
 
 1. **Clone the Repository**
 
-git clone https://github.com/sagibarshai/Auth-System.git
+**git clone https://github.com/sagibarshai/Auth-System.git**
 
-cd Auth-System
+**cd Auth-System**
 
 2. **Create the .env File**
    
@@ -63,23 +63,24 @@ Replace value with your actual values for each configuration.
    
 Run the following command to build and start the project using Docker Compose. It will automatically use the environment variables defined in the .env file located in the backend directory.
 
-docker-compose --env-file ./backend/.env up --build
+**docker-compose --env-file ./backend/.env up --build**
 
 4. **Stopping the Project**
 
 To stop the project, run:
 
-docker-compose down
+**docker-compose down**
 
 
 # Option 2: Two .env Files (One in the Backend Folder and One in the Root Directory)
-1. Clone the Repository
+
+1. **Clone the Repository**
    
-git clone https://github.com/sagibarshai/Auth-System.git
+**git clone https://github.com/sagibarshai/Auth-System.git**
 
-cd Auth-System
+**cd Auth-System**
 
-2. Create Two .env Files
+2. **Create Two .env Files**
 
 Backend .env file (located in backend/.env)
 
@@ -133,16 +134,16 @@ POSTGRES_PORT=value
 
 Replace value with your actual values for each configuration.
 
-3. Running the Project:
+3. **Running the Project:**
    
 To start the project with Docker Compose, run the following command:
 
-docker-compose up --build
+**docker-compose up --build**
 
 This will build the services and start them using the environment variables defined in both .env files—one in the root directory and one in the backend directory.
 
-4. Stopping the Project
+4. **Stopping the Project**
 
 To stop the project, run:
 
-docker-compose down
+**docker-compose down**
