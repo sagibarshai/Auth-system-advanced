@@ -117,14 +117,14 @@ File Location: backend/.env
 
 Contents of the .env file:
 
-# General Configuration
+General Configuration
 PORT=value
 JWT_KEY=value
 COOKIE_SECRET=value
 EMAIL_ADDRESS=value
 EMAIL_ACCESS_KEY=value
 
-# Database Configuration
+Database Configuration
 POSTGRES_USER=value
 POSTGRES_PASSWORD=value
 POSTGRES_DATABASE=value
@@ -132,9 +132,9 @@ POSTGRES_PORT=value
 POSTGRES_DB=value
 POSTGRES_HOST=value
 
-# Optional Settings
-# JWT_EXPIRED_IN=value
-# COOKIES_EXPIRED_IN=value
+Optional Settings
+JWT_EXPIRED_IN=value
+COOKIES_EXPIRED_IN=value
 Replace value with your actual values for each configuration.
 
 3. Running the Project
@@ -155,14 +155,14 @@ cd Auth-System
 Backend .env file (located in backend/.env)
 Contents of the .env file:
 
-# General Configuration
+General Configuration
 PORT=value
 JWT_KEY=value
 COOKIE_SECRET=value
 EMAIL_ADDRESS=value
 EMAIL_ACCESS_KEY=value
 
-# Database Configuration
+Database Configuration
 POSTGRES_USER=value
 POSTGRES_PASSWORD=value
 POSTGRES_DATABASE=value
@@ -170,13 +170,13 @@ POSTGRES_PORT=value
 POSTGRES_DB=value
 POSTGRES_HOST=value
 
-# Optional Settings
-# JWT_EXPIRED_IN=value
-# COOKIES_EXPIRED_IN=value
+Optional Settings
+JWT_EXPIRED_IN=value
+COOKIES_EXPIRED_IN=value
 Root .env file (located in the project root folder)
 Contents of the .env file:
 
-# Database Configuration (matching with backend/.env)
+Database Configuration (matching with backend/.env)
 POSTGRES_USER=value
 POSTGRES_PASSWORD=value
 POSTGRES_DATABASE=value
