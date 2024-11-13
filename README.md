@@ -103,7 +103,11 @@ Environment variables for sensitive data (*.env)
 
 # Database:
 
-Uses PostgreSQL for user and verification data (two tables: Users and Email_Verifications)
+Uses PostgreSQL for user and verification data:
+two tables: 
+**Users Table**
+
+**Email_Verifications Table**
 
 Secure connection and data management
 
