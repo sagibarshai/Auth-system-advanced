@@ -10,13 +10,14 @@ Docker, Git
 This guide provides two options for setting up the environment variables and running the project. Choose the option that best fits your needs.
 
 # Option 1: Single .env File in the Backend Folder
-1. **Clone the Repository
+
+1. **Clone the Repository**
 
 git clone https://github.com/sagibarshai/Auth-System.git
 
 cd Auth-System
 
-2. Create the .env File
+2. **Create the .env File**
    
 Inside the backend folder, create a file named .env to hold the environment variables for configuration and database settings.
 
@@ -58,13 +59,13 @@ COOKIES_EXPIRED_IN=value
 
 Replace value with your actual values for each configuration.
 
-3. Running the Project
+3. **Running the Project**
    
 Run the following command to build and start the project using Docker Compose. It will automatically use the environment variables defined in the .env file located in the backend directory.
 
 docker-compose --env-file ./backend/.env up --build
 
-4. Stopping the Project
+4. **Stopping the Project**
 
 To stop the project, run:
 
