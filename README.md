@@ -7,8 +7,6 @@
 Prerequisites
 Docker, Git
 
----
-
 This guide provides two options for setting up the environment variables and running the project. Choose the option that best fits your needs.
 
 # Option 1: Single .env File in the Backend Folder
