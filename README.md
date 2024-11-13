@@ -105,6 +105,7 @@ Environment variables for sensitive data (*.env)
 
 Uses PostgreSQL for user and verification data:
 two tables: 
+
 **Users Table**
 
 **Email_Verifications Table**
