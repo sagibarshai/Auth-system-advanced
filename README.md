@@ -141,4 +141,5 @@ This will build the services and start them using the environment variables defi
 
 To stop the project, run:
 
+
 docker-compose down
