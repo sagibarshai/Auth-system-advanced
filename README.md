@@ -59,10 +59,13 @@ COOKIES_EXPIRED_IN=value
 Replace value with your actual values for each configuration.
 
 3. Running the Project
+   
 Run the following command to build and start the project using Docker Compose. It will automatically use the environment variables defined in the .env file located in the backend directory.
 
 docker-compose --env-file ./backend/.env up --build
+
 4. Stopping the Project
+
 To stop the project, run:
 
 docker-compose down
@@ -140,6 +143,5 @@ This will build the services and start them using the environment variables defi
 4. Stopping the Project
 
 To stop the project, run:
-
 
 docker-compose down
