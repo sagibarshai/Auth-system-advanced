@@ -12,7 +12,9 @@ This guide provides two options for setting up the environment variables and run
 # Option 1: Single .env File in the Backend Folder
 1. Clone the Repository
 git clone https://github.com/sagibarshai/Auth-System.git
+
 cd Auth-System
+
 2. Create the .env File
 Inside the backend folder, create a file named .env to hold the environment variables for configuration and database settings.
 File Location: backend/.env
