@@ -70,22 +70,33 @@ Contents of the .env file:
 
 General Configuration
 PORT=value
+
 JWT_KEY=value
+
 COOKIE_SECRET=value
+
 EMAIL_ADDRESS=value
+
 EMAIL_ACCESS_KEY=value
 
 Database Configuration
 POSTGRES_USER=value
+
 POSTGRES_PASSWORD=value
+
 POSTGRES_DATABASE=value
+
 POSTGRES_PORT=value
+
 POSTGRES_DB=value
+
 POSTGRES_HOST=value
 
 Optional Settings
 JWT_EXPIRED_IN=value
+
 COOKIES_EXPIRED_IN=value
+
 Root .env file (located in the project root folder)
 Contents of the .env file:
 
