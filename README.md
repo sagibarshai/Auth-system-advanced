@@ -8,7 +8,7 @@ This project provides a secure and well-structured Node.js Express TypeScript ap
 
 # User Authentication:
 
-Signup with email and password
+Signup with email, password and other extra fields
 
 Signin with email and password
 
