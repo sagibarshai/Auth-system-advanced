@@ -12,7 +12,7 @@ Signup with email, password and other extra fields
 
 Signin with email and password
 
-Signout (invalidate token and cookie)
+Signout (delete token cookie)
 
 Email verification for account activation
 
