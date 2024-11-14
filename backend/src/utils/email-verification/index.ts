@@ -21,7 +21,9 @@ export const sendEmailVerification = async ({
     from: config.MAIL.FROM,
     to: to,
     subject: subject,
-    text: `${text} ${config.BASE_URL}:${config.PORT}/api/auth/emailVerification/${id}/${encodeURIComponent(token)}`,
+    html: ` <a href=${config.BASE_URL}:${config.PORT}/api/auth/emailVerification/${id}/${encodeURIComponent(token)}>
+    ${text}
+    </a> `,
   };
 
   const transporter = nodemailer.createTransport({
