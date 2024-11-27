@@ -17,10 +17,13 @@ export const signInController = async (req: SignUpRequest, res: Response, next: 
 
     const storedUser = await SelectUnsafeUserModel(req.body.email);
     if (!storedUser) return next(BadRequestError([{ message: "Wrong Credentials" }]));
-    if (!storedUser.isVerified) return next(ForbiddenError([{ message: "Email not verify, please check user email" }]));
+
 
     const isPasswordsMatch = compereHash(storedUser.password, req.body.password);
     if (!isPasswordsMatch) return next(BadRequestError([{ message: "Wrong Credentials" }]));
+
+    
+    if (!storedUser.isVerified) return next(ForbiddenError([{ message: "Email not verify, please check user email" }]));
 
     const safeUser = await UpdateLoginModel(req.body.email);
 
